@@ -1,4 +1,5 @@
 import React from "react";
+import { Navigate, Link } from "react-router-dom";
 import * as yup from 'yup';
 import Footer from '../components/Footer';
 //style
@@ -11,8 +12,11 @@ import google from "../styles/img/google.png";
 import profile from "../styles/img/perfil.jpg";
 import icon from '../styles/img/logo.jpg';
 
-
 function App() {
+
+const handleSignIn = () => {
+  <Navigate to="home" />
+}
 
 const validation = {
   email: yup.string().email().required('Email is required')
@@ -23,12 +27,12 @@ const {signGoogle, signApple} = validation;
   return (
     <>
       <div className="container-fluid ">
-        <div className="row ">
-          <div className="col-5 img-left">
-            <img src={twit} alt="twit" id="welcome-img" />
+        <div className="row bird-img">
+          <div className="col-5 img-left fixed-bottom  ">
+            <img src={twit} alt="twit" id="welcome-img" className='img-fluid' />
           </div>
 
-          <div className="col-7 right ps-5 ">
+          <div className="col-7 right ps-5  fix ">
             <div className="row m-5">
               <img src={icon} alt="icon" className="icon" />
             </div>
@@ -90,16 +94,21 @@ const {signGoogle, signApple} = validation;
                 </div>
 
             </div>
-            <div className="row mt-5">
+            <div className="row mt-5 mb-5">
                 <h3> Do you already have an account?</h3>
               <div className="col-5 btn-signin mt-5 mb-5">
-                <button type="button" class="btn btn-outline-secondary rounded-pill ">Sign in</button>
+                <button 
+                type="button" 
+                className="btn btn-outline-secondary rounded-pill "
+                onClick = {handleSignIn}> <a href="../containers/Home.jsx">Sign in</a></button>
               </div>
             </div>
           </div>
         </div>
       </div>
+     
       <Footer />
+    
     </>
   );
 }
